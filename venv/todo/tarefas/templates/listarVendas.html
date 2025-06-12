@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Vendas</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    
+    <h1>Lista de Vendas</h1>
+    {% if vendas %}
+        <ul>
+            {% for venda in vendas %}
+                <li>{{ venda }} - Produto: {{ venda.descricao_produto }}, Quantidade: {{ venda.quantidade }}, Valor Total: {{ venda.valor_total }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Nenhuma venda registrada ainda.</p>
+    {% endif %}
+    <a href="{% url 'registrar_venda' %}">Registrar Nova Venda</a>
+</body>
+</html>
